@@ -58,6 +58,7 @@ public class Home extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HOME");
@@ -110,7 +111,7 @@ public class Home extends javax.swing.JFrame {
         jRadioButton2.setText("Female");
 
         jComboBox1.setForeground(new java.awt.Color(255, 153, 153));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nayeon", "Jihyo", "Jeongyeon", "Momo", "Sana", "Mina", "Dahyun", "Chaeyoung", "Tzuyu" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OT9", "Nayeon", "Jihyo", "Jeongyeon", "Momo", "Sana", "Mina", "Dahyun", "Chaeyoung", "Tzuyu" }));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("TWICE Bias:");
@@ -132,6 +133,15 @@ public class Home extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Rage Italic", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 204, 204));
         jLabel11.setText("Please input here:");
+
+        jButton2.setBackground(new java.awt.Color(255, 153, 153));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("See List");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,7 +175,12 @@ public class Home extends javax.swing.JFrame {
                                                     .addComponent(jButton1))
                                                 .addGap(52, 137, Short.MAX_VALUE))
                                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton2)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton2))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,9 +197,9 @@ public class Home extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogoutBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -211,7 +226,9 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,9 +292,6 @@ public class Home extends javax.swing.JFrame {
             }else if("".equals(jTextField3.getText())){
                 JOptionPane.showMessageDialog(new JFrame(), "Birthdate is required", "Error",
                         JOptionPane.ERROR_MESSAGE);
-            } else if("".equals(jComboBox1.getSelectedItem())){
-                JOptionPane.showMessageDialog(new JFrame(), "Choose your bias", "Error",
-                        JOptionPane.ERROR_MESSAGE);
             } 
         else {     
             query = "INSERT INTO info(fullname, age, birthdate, gender, Bias)"+
@@ -289,7 +303,7 @@ public class Home extends javax.swing.JFrame {
             Hey.setAge(age);
             Hey.setBirthdate(birthDate);
             Hey.setGender(gender);
-            Hey.setbias(jComboBox1.getSelectedItem().toString());
+            Hey.setbias(bias);
             showMessageDialog(null, "Info added successfully!");
         }
         }   
@@ -297,6 +311,13 @@ public class Home extends javax.swing.JFrame {
                 System.out.println("Error!" + e.getMessage()); 
          }     
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       list List = new list();
+       List.setVisible(true);
+       List.pack();
+       List.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     public void setUser(String name){
         user.setText(name + "!");
@@ -342,6 +363,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton LogoutBtn;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
